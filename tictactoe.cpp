@@ -62,6 +62,9 @@ using namespace std;
     bool playing = true;
 
     char BLANK = '0';
+    char XMOVE = 'X';
+    char OMOVE = 'O';
+    
     
     int XTURN = 0;
     int OTURN = 1;
@@ -74,12 +77,16 @@ using namespace std;
 
     while (playing == true) {
       
-      printBoard(board);
       letter = checkerlet(letter);
       number = checkernum(number);
 
-      cout << letter << endl;
-      cout << number << endl;
+      if (letter = 'a'){
+	if (number = '1') {
+	  board[0][0] = XMOVE;
+	}
+      }
+      printBoard(board);
+      playing = false;
     }
 
     return 0;
