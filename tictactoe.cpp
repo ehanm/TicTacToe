@@ -61,7 +61,7 @@ using namespace std;
     
     bool playing = true;
 
-    char BLANK = '0';
+    char BLANK = ' ';
     char XMOVE = 'X';
     char OMOVE = 'O';
     
@@ -73,20 +73,165 @@ using namespace std;
     int OWINS = 0;
     
     int turn = XTURN;
-    char board[3][3] = {'0','0','0','0','0','0','0','0','0'};
-
+    char board[3][3] = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
+    
     while (playing == true) {
       
       letter = checkerlet(letter);
       number = checkernum(number);
-
-      if (letter = 'a'){
-	if (number = '1') {
-	  board[0][0] = XMOVE;
+      
+      if (letter == 'a'){
+	if (number == '1') {
+	  if (board[0][0] == BLANK) {
+	    if (turn == XTURN) {
+	      board[0][0] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[0][0] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	  
+	}
+	if (number == '2') {
+	  if (board[0][1] == BLANK) {
+	    if (turn == XTURN) {
+	      board[0][1] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[0][1] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	  
+	}
+	if (number == '3') {
+	  if (board[0][2] == BLANK) {
+	    if (turn == XTURN) {
+	      board[0][2] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[0][2] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
 	}
       }
+
+      else if (letter == 'b'){
+	if (number == '1') {
+	  if (board[1][0] == BLANK) {
+	    if (turn == XTURN) {
+	      board[1][0] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[1][0] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	}
+	if (number == '2') {
+	  if (board[1][1] == BLANK) {
+	    if (turn == XTURN) {
+	      board[1][1] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[1][1] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	}
+	if (number == '3') {
+	  if (board[1][2] == BLANK) {
+	    if (turn == XTURN) {
+	      board[1][2] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[1][2] = OMOVE;
+	      turn = XTURN;
+	    }			   
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	}
+
+      }
+      else if (letter == 'c') {
+
+	if (number == '1') {
+	  if (board[2][0] == BLANK) {
+	    if (turn == XTURN) {
+	      board[2][0] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[2][0] = OMOVE;
+	      turn = XTURN;
+	    }
+	    
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	  
+	}
+	if (number == '2') {
+	  if (board[2][1] == BLANK) {
+	    if (turn == XTURN) {
+	      board[2][1] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[2][1] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+	  }
+	}
+	if (number == '3') {
+	  if (board[2][2] == BLANK) {
+	    if (turn == XTURN) {
+	      board[2][2] = XMOVE;
+	      turn = OTURN;
+	    }
+	    else if (turn == OTURN) {
+	      board[2][2] = OMOVE;
+	      turn = XTURN;
+	    }
+	  }
+	  else {
+	    cout << "there is already a piece there!" << endl;
+          }
+
+	}
+      }
+      
       printBoard(board);
-      playing = false;
+
     }
 
     return 0;
