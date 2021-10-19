@@ -16,6 +16,54 @@ using namespace std;
     
   }
 
+  bool checkWin(char check[3][3]) {
+
+    char BLANK = ' ';
+    
+    if (check[0][0] == check[0][1] && check[0][1] == check[0][2] && check[0][0] != BLANK) { // all horizontal win conditions
+      return true;
+    }
+    else if (check[1][0] == check[1][1] && check[1][1] == check[1][2] && check[1][0] != BLANK) {
+      return true;
+    }
+    else if (check[2][0] == check[2][1] && check[2][1] == check[2][2] && check[2][0] != BLANK) {
+      return true;
+    }
+    else if (check[0][0] == check[1][0] && check[1][0] == check[2][0] && check[0][0] != BLANK) { // all vertical win conditions
+      return true;
+    }
+    else if (check[0][1] == check[1][1] && check[1][1] == check[2][1] && check[0][1] != BLANK) {
+      return true;
+    }
+    else if (check[0][2] == check[1][2] && check[1][2] == check[2][2] && check[0][2] != BLANK) {
+      return true;
+    }
+    else if (check[0][0] == check[1][1] && check[1][1] == check[2][2] && check[0][0] != BLANK) { // the diagonal win conditions
+      return true;
+    }
+    else if (check[2][0] == check[1][1] && check[1][1] == check[0][2] && check[2][0] != BLANK) {
+      return true;
+    }
+    
+    return false;
+  }
+
+  bool checkTie(char check[3][3]) {
+
+    char BLANK = ' ';
+    
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+	if (check[i][j] == BLANK){
+	  return false;
+	}
+      }
+    }
+    
+    return true;
+  }
+  
+
   char checkerlet(char let) {
 
     bool cont = false;
@@ -58,6 +106,7 @@ using namespace std;
 
     char letter;
     char number;
+    char again;
     
     bool playing = true;
 
@@ -231,7 +280,51 @@ using namespace std;
       }
       
       printBoard(board);
+      if (checkWin(board) == true) {
+	if (turn == XTURN) {
+	  OWINS++;
+	  cout << "O wins!" << endl;
+	}
+	else if (turn == OTURN) {
+	  XWINS++;
+	  cout << "X wins!" << endl;
+	}
+	cout << "X has won " << XWINS << " times and O has won " << OWINS << " times." << endl;
+	cout << "Play again? (y/n)" << endl;
+	cin >> again;
+      }
 
+      else if (checkTie(board) == true) {
+	cout << "It's a tie!" << endl;
+	cout << "X has won " << XWINS << " times and O has won " << OWINS << " times." << endl;
+	cout << "Play again? (y/n)" << endl;
+	cin >> again;
+      }
+      
+      
+      if (again == 'y' || again == 'Y') {
+	playing = true;
+	board[0][0] = BLANK;
+	board[0][1] = BLANK;
+	board[0][2] = BLANK;
+	board[1][0] = BLANK;
+	board[1][1] = BLANK;
+	board[1][2] = BLANK;
+	board[2][0] = BLANK;
+	board[2][1] = BLANK;
+	board[2][2] = BLANK;
+	again = ' ';
+      }
+      else if (again == 'n' || again == 'N') {
+	playing = false;
+      }
+	
+      
+
+      
+      
+      
+      
     }
 
     return 0;
